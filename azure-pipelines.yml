@@ -55,3 +55,18 @@ stages:
         appType: 'webAppLinux'
         WebAppName: 'rahylshettyacademy'
         packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.war'
+
+- stage: RunTests
+  displayName: 'Run Automated Tests'
+  dependsOn: DeployToTest
+  jobs:
+  - job: RunTests
+    steps:
+    - script: |
+        echo "Cloning test repository..."
+        git clone https://github.com/theta1211/UdemyAutomation.git
+      displayName: 'Clone Test Repository'
+
+    - script: |
+        mvn test
+      displayName: 'Run Tests'
