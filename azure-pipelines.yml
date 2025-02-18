@@ -77,6 +77,11 @@ stages:
   jobs:
     - job: deploy
       steps:
+        - task: DownloadBuildArtifacts@1
+          inputs:
+            buildType: 'current'
+            artifactName: 'warfile'
+            downloadPath: '$(Build.ArtifactStagingDirectory)'
         - task: AzureRmWebAppDeployment@5
           inputs:
             ConnectionType: 'AzureRM'
