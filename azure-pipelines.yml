@@ -83,5 +83,5 @@ stages:
             azureSubscription: 'Azure subscription 1(4)(0f83a888-0468-4dd8-9412-f949e6222974)'
             appType: 'webAppLinux'
             WebAppName: 'prodrahulshettyacademyatudemy'
-            packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.war'
+            packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.war'
             DeploymentTypeLinux: 'oneDeploy'
